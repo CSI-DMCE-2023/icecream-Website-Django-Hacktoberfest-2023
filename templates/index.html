@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% load bootstrap_icons %}
+{% load static %}
+{% block title %}
+    Home
+{% endblock title %}
+{% block body %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0"
+                 role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% include 'modal.html' %}
+    {% include 'corousal.html' %}
+    <h1 class=" my-2 text-center">Select from our range of ice-cream</h1>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="https://wallpapersdsc.net/wp-content/uploads/2016/09/Ice-cream-4K.jpg"
+                             class="d-block w-100"
+                             alt="...">
+                        <div class="card-body">
+                            <p class="card-text">
+                                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="https://res.cloudinary.com/sagacity/image/upload/c_crop/c_limit,w_1080/v1396764492/WTS4_eousmy.jpg"
+                             class="d-block w-100"
+                             alt="...">
+                        <div class="card-body">
+                            <p class="card-text">
+                                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="https://in-sight.symrise.com/fileadmin/_processed_/2/6/csm_Morgensterns_Finest_Ice_Cream_Most_Creative_Ice_Cream_2017_4093aa706d.jpg"
+                             class="d-block w-100"
+                             alt="...">
+                        <div class="card-body">
+                            <p class="card-text">
+                                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% comment %} <----------------------------------------------------------------------------------------------------> {% endcomment %}
+                <h1 class='text-center my-4'>Our Reviews</h1>
+                <div id="carouselExampleInterval"
+                     class="carousel slide "
+                     data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for item in com %}
+                            {% if item.id is 1 %}
+                                <div class="carousel-item active" data-bs-interval="2000">
+                                {% else %}
+                                    <div class="carousel-item " data-bs-interval="3000">
+                                    {% endif %}
+                                    <div class='card m-auto'
+                                         style='width: 500px;
+                                                height: 250px;
+                                                border-radius: 50px;
+                                                background: #fdfcfc;
+                                                box-shadow:  20px 20px 60px #d7d6d6, -20px -20px 60px #ffffff;'>
+                                        <div class='row'>
+                                            <div class='col-3'>
+                                                {% if item.gender == 'male' %}
+                                                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-ydq8sj7GpiGisPG8saJCmCIhrhXmTAANRQ&usqp=CAU'
+                                                         style='width: 100px;'>
+                                                {% else %}
+                                                    <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_HwCkyt-jVbjOLkuMwxBq2C-OWzsA8kjC0w&usqp=CAU'
+                                                         style='width: 100px;'>
+                                                {% endif %}
+                                            </div>
+                                            <div class='col-6'>
+                                                <h5>{{ item.fname }} {{ item.lname }}</h5>
+                                                <p>{{ item.username }}</p>
+                                                <p>{{ item.city }} {{ item.state }} {{ item.zip }}</p>
+                                            </div>
+                                        </div>
+                                        <div class='col-12'>{{ item.comments }}</div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <button class="carousel-control-prev  w-25"
+                                    type="button"
+                                    data-bs-target="#carouselExampleInterval"
+                                    data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon bg-info fs-3" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next w-25"
+                                    type="button"
+                                    data-bs-target="#carouselExampleInterval"
+                                    data-bs-slide="next">
+                                <span class="carousel-control-next-icon bg-info fs-3" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class='container'>
+                            <h1 class='text-center m-3'>Comment On Website</h1>
+                            <form class="row g-3" action='comments' method='POST'>
+                                {% csrf_token %}
+                                <div class="col-md-4">
+                                    <label for="validationDefault01" class="form-label">First name</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name='fname'
+                                           id="validationDefault01"
+                                           required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="validationDefault02" class="form-label">Last name</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           name='lname'
+                                           id="validationDefault02"
+                                           required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="validationDefaultUsername" class="form-label">
+                                        Username
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="validationDefaultUsername"
+                                               name='username'
+                                               aria-describedby="inputGroupPrepend2"
+                                               required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationDefault03" class="form-label">
+                                        City
+                                    </label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="validationDefault03"
+                                           name='city'
+                                           required>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="validationDefault04" class="form-label">
+                                        State
+                                    </label>
+                                    <select class="form-select" id="validationDefault04" name='state' required>
+                                        <option selected disabled>
+                                            Choose...
+                                        </option>
+                                        <option value="Maharastra">
+                                            Maharastra
+                                        </option>
+                                        <option value="Punjab">
+                                            Punjab
+                                        </option>
+                                        <option value="Uttar Pradesh">
+                                            Uttar Pradesh
+                                        </option>
+                                        <option value="Banglore">
+                                            Banglore
+                                        </option>
+                                        <option value="Chennai">
+                                            Chennai
+                                        </option>
+                                    </select>
+                                </div>
+                                <p>
+                                    Gender
+                                </p>
+                                <div class="form-check d-inline">
+                                    <input class="form-check-input"
+                                           type="radio"
+                                           name="gender"
+                                           id="flexRadioDefault1"
+                                           value='male'>
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        M
+                                    </label>
+                                </div>
+                                <div class="form-check d-inline">
+                                    <input class="form-check-input"
+                                           type="radio"
+                                           name="gender"
+                                           id="flexRadioDefault2"
+                                           value='female'
+                                           checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        F
+                                    </label>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="validationDefault05" class="form-label">
+                                        Zip
+                                    </label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="validationDefault05"
+                                           name='zip'
+                                           required>
+                                </div>
+                                <div class="form-floating">
+                                    <textarea class="form-control"
+                                              placeholder="Leave a comment here"
+                                              id="floatingTextarea2"
+                                              style="height: 100px"
+                                              name='com'></textarea>
+                                    <label for="floatingTextarea2">
+                                        Comments
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary" type="submit">
+                                        Submit
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    {% endblock body %}

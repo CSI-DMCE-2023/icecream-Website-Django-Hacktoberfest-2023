@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load bootstrap_icons %}
+{% load static %}
+{% block title %}
+    Services
+{% endblock title %}
+{% block body %}
+    <style>
+    html {
+        font-size: 14px;
+      }
+      @media (min-width: 768px) {
+        html {
+          font-size: 16px;
+        }
+      }
+      
+      .container {
+        max-width: 960px;
+      }
+      .big-banner{
+        background-image:url('../https://i.pinimg.com/originals/b9/29/0f/b9290fb7cafdecc23383ffdcc6222327.jpg');
+      }
+      
+      .pricing-header {
+        max-width: 700px;
+      }
+      
+      .card-deck .card {
+        min-width: 220px;
+      }
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+    </style>
+    <!-- Custom styles for this template -->
+</head>
+<body>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0"
+                 role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div>
+        <form action='cartprocess' method='post'>
+            {% csrf_token %}
+            <button type="submit"
+                    class="btn btn-primary position-absolute top-15 end-0 m-5">
+                <h3>{% bs_icon 'cart3' size='1.2em' %}Cart</h3>
+                <span class="position-absolute top-0 start-100 translate-middle badge fs-6 rounded-pill bg-danger">
+                    {{ item.noofitem|default:0 }}
+                    <span class="visually-hidden">unread messages</span>
+                </span>
+            </button>
+        </form>
+    </div>
+    <div>
+        <div class="big-banner px-0">
+            <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                <h1 class="display-4">Pricing</h1>
+                <p class="lead">Here you can check prices of ice-creams that are available in our shop</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <img src="https://i.pinimg.com/originals/b9/29/0f/b9290fb7cafdecc23383ffdcc6222327.jpg"
+             class="d-block w-100 mx-0"
+             alt="...">
+        <form method="POST" action="/services">
+            {% csrf_token %}
+            <div class="card-deck mb-3 text-center ">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">ice-cream</h4>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title pricing-card-title">
+                            We’re here to add a little extra sweetness to your day.So select your favorite ice cream and enjoy it with extra sweetness  <small class="text-muted"></small>
+                        </h3>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>1.Butterscotch=/60</li>
+                            <li>2.chocolate=/70</li>
+                            <li>3.strawberry=/50</li>
+                            <li>4.pistachio=/99</li>
+                            <li>5.vanilla=/45</li>
+                            <li>6.rasberry ripple=/120</li>
+                            <li>7.matcha ice cream=/75</li>
+                            <li>8.moose tracks=/65</li>
+                            <li>9.eggnog=/120</li>
+                        </ul>
+                        <select name="ice" class="btn btn-outline-success">
+                            <option name='ice' value="select">
+                                Select
+                            </option>
+                            <option name='ice' value="Butterscotch" selected>
+                                Butterscotch
+                            </option>
+                            <option name='ice' value="chocolate">
+                                chocolate
+                            </option>
+                            <option name='ice' value="strawberry">
+                                strawberry
+                            </option>
+                            <option name='ice' value="pistachio">
+                                pistachio
+                            </option>
+                            <option name='ice' value="vanilla">
+                                vanilla
+                            </option>
+                            <option name='ice' value="rasberry">
+                                rasberry
+                            </option>
+                            <option name='ice' value="matcha">
+                                matcha
+                            </option>
+                            <option name='ice' value="moose">
+                                moose
+                            </option>
+                            <option name='ice' value="eggnog">
+                                eggnog
+                            </option>
+                        </select>
+                        <input type="submit" class="btn btn-outline-success" value="click">
+                    </div>
+                </form>
+                <form method="POST" action="/services">
+                    {% csrf_token %}
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">Softy</h4>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="card-title pricing-card-title">
+                                Select your favorite softy! <small class="text-muted"></small>
+                            </h2>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>mango=/55</li>
+                                <li>vanilla=/78</li>
+                                <li>chocolate=/85</li>
+                            </ul>
+                            <select name="softy" class="btn btn-outline-dark">
+                                <option name='softy'  value="mango">
+                                    mango
+                                </option>
+                                <option name='softy' value="vanilla">
+                                    vanilla
+                                </option>
+                                <option name='softy' value="chocolate">
+                                    chocolate
+                                </option>
+                            </div>
+                        </select>
+                        <input type="submit"  class="btn btn-outline-dark" value="click">
+                    </div>
+                </div>
+            </form>
+            <form method="POST" action="/services">
+                {% csrf_token %}
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Famili -pack</h4>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title pricing-card-title">
+                            And here the biggest family pack for! select your favorite and enjoy with yor family <small class="text-muted">/ mo</small>
+                        </h2>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>vanilla=/200</li>
+                            <li>kasata=/150</li>
+                            <li>butterscotch=/200</li>
+                            <li>chocolate=/199</li>
+                        </ul>
+                        <select name='familypack' class="btn btn-outline-warning">
+                            <option name='familypack' value="vanilla">
+                                vanilla
+                            </option>
+                            <option name='familypack' value="kasata">
+                                kasata
+                            </option>
+                            <option name='familypack' value="butterscotch">
+                                butterscotch
+                            </option>
+                            <option name='familypack' value="chocolate">
+                                chocolate
+                            </option>
+                        </div>
+                        <input type="submit"  class="btn btn-outline-warning" value="click">
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endblock body %}

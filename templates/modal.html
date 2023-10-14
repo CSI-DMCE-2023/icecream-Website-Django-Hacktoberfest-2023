@@ -1,0 +1,71 @@
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action='login' method='post'>
+            {% csrf_token %}
+            <div class="row mb-3">
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
+              <div class="col-sm-10">
+                <input type="text" name='Username' class="form-control" id="inputEmail3">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input type="text" name='password' class="form-control" id="inputPassword3">
+              </div>
+            </div>
+            <div class='text-center'>
+            <button type="submit" class="btn btn-success">Sign in</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3" action='signup' method='post'>
+            {% csrf_token %}
+            <div class="col-md-6">
+              <label for="validationDefault01" class="form-label">First name</label>
+              <input type="text" class="form-control" name='fname' id="validationDefault01"  required>
+            </div>
+            <div class="col-md-6">
+              <label for="validationDefault02" class="form-label">Last name</label>
+              <input type="text" class="form-control" name='lname' id="validationDefault02" required>
+            </div>
+            <div class="col-md-12">
+              <label for="validationDefaultUsername" class="form-label">Username</label>
+              <div class="input-group">
+                <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                <input type="text" class="form-control" name='username' id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="validationDefault03" class="form-label">email</label>
+              <input type="text" class="form-control" name='email' id="validationDefault03" required>
+            </div>
+            <div class="col-md-12">
+                <label for="validationDefault03" class="form-label">password</label>
+                <input type="text" class="form-control" name='password' id="validationDefault03" required>
+              </div>
+            <div class="col-12 text-center">
+              <button class="btn btn-success" type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

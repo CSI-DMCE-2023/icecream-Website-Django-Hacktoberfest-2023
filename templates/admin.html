@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block title %}
+Admin
+{% endblock title %}
+{% block body %}
+<h1 class='text-center m-5'>Admin Panel</h1>
+<div class='container'>
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Contacts
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">name</th>
+                        <th scope="col">email</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">desc</th>
+                        <th scope="col">date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in contact %}
+                      <tr>
+                        <th scope="row">{{item.name}}</th>
+                        <td>{{item.email}}</td>
+                        <td>{{item.phone}}</td>
+                        <td>{{item.desc}}</td>
+                        <td>{{item.date}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Customers
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">fname</th>
+                        <th scope="col">lname</th>
+                        <th scope="col">username</th>
+                        <th scope="col">email</th>
+                        <th scope="col">password</th>
+                        <th scope="col">acccreate</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in user %}
+                      <tr>
+                        <th scope="row">{{item.fname}}</th>
+                        <td>{{item.lname}}</td>
+                        <td>{{item.username}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.password}}</td>
+                        <td>{{item.accountcreated}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Comments
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">fname</th>
+                        <th scope="col">lname</th>
+                        <th scope="col">username</th>
+                        <th scope="col">city</th>
+                        <th scope="col">state</th>
+                        <th scope="col">zip</th>
+                        <th scope="col">gender</th>
+                        <th scope="col">comments</th>
+                        <th scope="col">time</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in com %}
+                      <tr>
+                        <th scope="row">{{item.fname}}</th>
+                        <td>{{item.lname}}</td>
+                        <td>{{item.username}}</td>
+                        <td>{{item.city}}</td>
+                        <td>{{item.state}}</td>
+                        <td>{{item.zip}}</td>
+                        <td>{{item.gender}}</td>
+                        <td>{{item.comments}}</td>
+                        <td>{{item.commenttime}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock body %}

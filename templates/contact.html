@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}contact{% endblock title %}
+
+{% block body %}
+<div class="container fluide px-0 mb-3 py-4">
+    <img src="https://avancen.com/imgs/contactus.jpg" class="d-block w-100 mx-0" alt="...">
+</div>
+<div class="container">
+    <h1 class="text-center">Contact Us</h1>
+    <form method="POST" action="/contact">
+      {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="entre your name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="entre your email">
+          </div>
+        
+          <div class="form-group">
+            <label for="phone">Phone number</label>
+            <input type="phone" class="form-control" id="phone" name="phone" placeholder="entre your phone number">
+          </div>
+        
+        <div class="form-group">
+          <label for="desc">Tell me about what ypou want to contact me for...</label>
+          <textarea class="form-control" id="desc" rows="3" name="desc"></textarea>
+        </div>
+        <button type="Submit" class="btn btn-dark ">Submit</button>
+
+      </form>
+    </div>
+
+{% endblock body %}
